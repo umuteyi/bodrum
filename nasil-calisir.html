@@ -19,7 +19,9 @@
 
     .navbar{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:1000}
     .nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative}
+    .logo-wrap{position:relative;display:inline-block;padding-bottom:12px}
     .logo{width:clamp(120px,18vw,160px)}
+    .logo-bodrum{position:absolute;right:0;bottom:0;font-size:.62rem;font-weight:800;letter-spacing:.8px;color:var(--red);text-transform:uppercase;line-height:1}
     .nav-right{display:flex;align-items:center;gap:12px}
     .nav-links{display:none;gap:18px}
     .nav-links a{color:#2a2a2a;font-weight:700;font-size:.95rem;padding:8px 10px;border-radius:999px;transition:.2s ease}
@@ -69,8 +71,9 @@
 <body>
   <header class="navbar">
     <div class="container nav-inner">
-      <a href="index.html" aria-label="Pilot Garage Ana Sayfa">
+      <a href="index.html" aria-label="Pilot Garage Ana Sayfa" class="logo-wrap">
         <img class="logo" src="logo6.svg" alt="Pilot Garage Logo">
+        <span class="logo-bodrum">Bodrum</span>
       </a>
       <div class="nav-right">
         <nav class="nav-links" aria-label="Ana gezinme">
