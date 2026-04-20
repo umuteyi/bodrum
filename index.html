@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pilot Garage Bodrum | Profesyonel Oto Ekspertiz</title>
+  <meta name="description" content="Bodrum'da TSE belgeli, tarafsız ve hızlı oto ekspertiz hizmeti. Blackbox, Business, Firstclass paketleri. Hemen WhatsApp'tan yazın." />
   <style>
     :root {
       --black: #0b0b0b;
@@ -17,6 +18,9 @@
       --shadow: 0 18px 42px rgba(0, 0, 0, 0.12);
       --radius: 16px;
       --maxw: 1180px;
+      --wa: #25d366;
+      --wa-dark: #128c4a;
+      --gold: #b8860b;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,9 +39,7 @@
     .section-subtitle { color: var(--muted); max-width: 720px; margin-bottom: 34px; }
 
     .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: #ffffff;
       transition: background-color .25s ease, box-shadow .25s ease;
       border-bottom: 1px solid #ececec;
@@ -47,34 +49,20 @@
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
       backdrop-filter: blur(10px);
     }
-    .nav-inner {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      position: relative;
-    }
-    .logo {
-      width: clamp(120px, 18vw, 180px);
-      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22));
-    }
+    .nav-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 14px; position: relative; }
+    .logo { width: clamp(120px, 18vw, 180px); filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22)); }
     .nav-right { display: flex; align-items: center; gap: 12px; }
     .nav-links { display: none; gap: 18px; }
     .nav-links a {
-      color: #2a2a2a;
-      font-weight: 700;
-      font-size: .95rem;
-      padding: 8px 10px;
-      border-radius: 999px;
+      color: #2a2a2a; font-weight: 700; font-size: .95rem;
+      padding: 8px 10px; border-radius: 999px;
       transition: background-color .2s ease, color .2s ease;
     }
     .nav-links a:hover { background: #f3f3f3; color: var(--red); }
     .menu-toggle {
       width: 40px; height: 40px; border-radius: 10px;
-      border: 1px solid #d9d9d9;
-      background: #fff; color: #111; cursor: pointer;
-      display: inline-grid; place-items: center;
+      border: 1px solid #d9d9d9; background: #fff; color: #111;
+      cursor: pointer; display: inline-grid; place-items: center;
     }
     .menu-toggle span { width: 18px; height: 2px; background: #111; display: block; margin: 2px 0; }
     .mobile-menu {
@@ -87,7 +75,7 @@
     .mobile-menu a:hover { background: #f5f5f5; color: var(--red); }
 
     .btn {
-      display: inline-flex; align-items: center; justify-content: center;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       border-radius: 999px; border: 1px solid transparent; font-weight: 700;
       padding: 12px 22px; transition: .2s ease; cursor: pointer;
     }
@@ -96,115 +84,106 @@
     .btn-primary:hover { background: var(--red-dark); }
     .btn-outline { border-color: #2f2f2f; color: #222; background: #fff; }
     .btn-outline:hover { border-color: #111; background: #f5f5f5; }
+    .btn-wa { background: var(--wa); color: #fff; }
+    .btn-wa:hover { background: var(--wa-dark); }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; }
 
     .hero {
-      min-height: 92vh;
-      color: #fff;
-      background: #101010;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      padding: 44px 0 80px;
+      min-height: 92vh; color: #fff; background: #101010;
+      position: relative; overflow: hidden; display: flex;
+      align-items: center; padding: 44px 0 80px;
     }
     .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
+      content: ""; position: absolute; inset: 0;
       background:
         linear-gradient(100deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.74) 40%, rgba(0,0,0,.44) 68%, rgba(0,0,0,.66) 100%),
         radial-gradient(circle at 78% 18%, rgba(217,4,41,.28), rgba(217,4,41,0) 38%);
       z-index: 1;
     }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
     .hero-bg-layer {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity .8s ease;
-      transform: scale(1.03);
+      position: absolute; inset: 0; background-size: cover;
+      background-position: center; opacity: 0;
+      transition: opacity .8s ease; transform: scale(1.03);
     }
     .hero-bg-layer.active { opacity: 1; }
     .hero-grid {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr;
-      max-width: 640px;
-      gap: 22px;
-      align-items: center;
+      position: relative; z-index: 2; display: grid;
+      grid-template-columns: 1fr; max-width: 640px;
+      gap: 22px; align-items: center;
     }
     .hero h1 { font-size: clamp(2rem, 6vw, 4rem); line-height: 1.05; max-width: 14ch; margin-bottom: 18px; }
     .hero p { color: #d2d2d2; max-width: 54ch; margin-bottom: 28px; font-size: clamp(1rem, 2.5vw, 1.2rem); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: .86rem;
-      margin-bottom: 16px;
-      color: #f1f1f1;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px; padding: 6px 12px; font-size: .86rem;
+      margin-bottom: 16px; color: #f1f1f1;
     }
     .hero-kicker::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #31d167;
-      box-shadow: 0 0 0 4px rgba(49, 209, 103, 0.2);
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      background: #31d167; box-shadow: 0 0 0 4px rgba(49, 209, 103, 0.2);
     }
-    .bg-dots {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 6px;
-    }
+    .bg-dots { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
     .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.45);
-      border: 1px solid rgba(255,255,255,.22);
-      cursor: pointer;
-      padding: 0;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,.45); border: 1px solid rgba(255,255,255,.22);
+      cursor: pointer; padding: 0;
     }
     .dot.active { background: #fff; transform: scale(1.24); }
 
     .trust-bar { background: var(--black); color: #fff; }
     .trust-grid {
-      padding: 22px 0;
-      display: grid;
+      padding: 22px 0; display: grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 12px 18px; text-align: center;
     }
     .trust-item { font-weight: 700; font-size: .92rem; }
 
     .section.alt { background: #f7f7f7; }
-    .services-grid, .steps-grid, .why-grid, .testimonials-grid {
+
+    /* Paket onizleme kartlari */
+    .packages-preview { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .pkg-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px 24px; position: relative; overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,.05);
+      transition: .25s ease;
+    }
+    .pkg-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
+    .pkg-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+      background: var(--accent, var(--red));
+    }
+    .pkg-tag {
+      display: inline-block; font-weight: 800; letter-spacing: 2px;
+      font-size: .78rem; color: var(--accent, var(--red));
+      margin-bottom: 8px;
+    }
+    .pkg-card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+    .pkg-card p { color: var(--muted); margin-bottom: 16px; }
+    .pkg-card .learn-link { color: var(--accent, var(--red)); font-weight: 700; }
+    .pkg-popular {
+      border-color: var(--red);
+      box-shadow: 0 20px 40px rgba(217,4,41,.12);
+    }
+    .pkg-popular-badge {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--red); color: #fff;
+      font-size: .7rem; font-weight: 800; letter-spacing: 1px;
+      padding: 4px 10px; border-radius: 999px;
+    }
+
+    .steps-grid, .why-grid, .testimonials-grid {
       display: grid; grid-template-columns: 1fr; gap: 18px;
     }
     .card {
       background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
       padding: 24px; box-shadow: 0 10px 24px rgba(0,0,0,.05);
     }
-    .icon-wrap {
-      width: 46px; height: 46px; border-radius: 12px;
-      background: rgba(217,4,41,.09); color: var(--red);
-      display: inline-grid; place-items: center; margin-bottom: 14px;
-    }
     .card h3 { margin-bottom: 8px; font-size: 1.18rem; }
     .card p { color: var(--muted); }
-    .learn-link { display: inline-block; margin-top: 12px; color: var(--red); font-weight: 700; }
     .step-number {
       width: 42px; height: 42px; border-radius: 50%; background: var(--red); color: #fff;
       display: grid; place-items: center; font-weight: 800; margin-bottom: 12px;
@@ -212,29 +191,70 @@
     .why-item { display: flex; gap: 10px; align-items: flex-start; }
     .why-icon {
       width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
-      background: rgba(217,4,41,.1); color: var(--red); display: grid; place-items: center; font-weight: 800;
+      background: rgba(217,4,41,.1); color: var(--red);
+      display: grid; place-items: center; font-weight: 800;
     }
-    .quote { color: var(--red); font-size: 1.9rem; line-height: 1; margin-bottom: 8px; }
 
-    .cta-band {
-      background: linear-gradient(100deg, #b10222, #d90429 45%, #f1284c);
-      color: #fff;
+    /* Google yorumlar bolumu */
+    .reviews-summary {
+      display: grid; gap: 20px; align-items: center;
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px; margin-bottom: 30px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.05);
+      text-align: center;
     }
+    .rating-main { display: flex; flex-direction: column; align-items: center; }
+    .rating-number {
+      font-size: 3.4rem; font-weight: 800; line-height: 1; color: #111;
+    }
+    .rating-stars { color: #fbbc04; font-size: 1.4rem; letter-spacing: 2px; margin: 6px 0; }
+    .rating-meta { color: var(--muted); font-size: .95rem; }
+    .rating-meta strong { color: #111; }
+    .google-logo {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-weight: 700; color: #111;
+    }
+    .google-logo .g-colored {
+      font-weight: 900;
+      background: linear-gradient(90deg, #4285f4 0%, #4285f4 25%, #ea4335 25%, #ea4335 50%, #fbbc04 50%, #fbbc04 75%, #34a853 75%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .reviews-cta .btn {
+      background: #fff; color: #111; border: 1px solid #dadce0;
+    }
+    .reviews-cta .btn:hover { background: #f8f9fa; }
+
+    .review-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 22px; box-shadow: 0 10px 24px rgba(0,0,0,.05);
+    }
+    .review-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, #d90429, #b10222);
+      color: #fff; font-weight: 800; display: grid; place-items: center;
+      font-size: 1.05rem;
+    }
+    .review-name { font-weight: 700; line-height: 1.2; }
+    .review-stars { color: #fbbc04; font-size: .95rem; letter-spacing: 1px; margin-top: 2px; }
+    .review-body { color: #333; }
+    .review-source {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: .82rem; color: var(--muted); margin-top: 12px;
+    }
+    .review-source::before {
+      content: "G"; display: inline-grid; place-items: center;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: linear-gradient(135deg,#4285f4,#34a853); color: #fff;
+      font-weight: 900; font-size: .7rem;
+    }
+
+    .cta-band { background: linear-gradient(100deg, #b10222, #d90429 45%, #f1284c); color: #fff; }
     .cta-inner { text-align: center; }
     .cta-inner .btn { margin-top: 16px; background: #fff; color: #111; }
     .cta-inner .btn:hover { background: #f4f4f4; }
 
-    .appointment-wrap, .contact-grid {
-      display: grid; grid-template-columns: 1fr; gap: 18px;
-    }
-    .appointment-form { display: grid; gap: 12px; }
-    .field label { display: inline-block; margin-bottom: 6px; font-weight: 600; }
-    .field input {
-      width: 100%; border: 1px solid #d8d8d8; border-radius: 10px;
-      padding: 12px 13px; outline: none; background: #fff;
-    }
-    .field input:focus { border-color: var(--red); }
-    .helper { color: var(--muted); font-size: .9rem; margin-top: 8px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
     .map-wrap iframe { width: 100%; min-height: 320px; border: 0; border-radius: var(--radius); box-shadow: var(--shadow); }
     .footer { background: #0f0f0f; color: #c8c8c8; padding: 24px 0; text-align: center; }
 
@@ -243,49 +263,57 @@
 
     .whatsapp-float {
       position: fixed; right: 16px; bottom: 16px; width: 56px; height: 56px; border-radius: 50%;
-      display: inline-grid; place-items: center; background: #25d366; color: #fff;
+      display: inline-grid; place-items: center; background: var(--wa); color: #fff;
       box-shadow: 0 12px 26px rgba(0,0,0,.3); z-index: 1050;
+      transition: transform .2s ease;
     }
-    .whatsapp-float svg { width: 28px; height: 28px; }
+    .whatsapp-float:hover { transform: scale(1.05); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: currentColor; }
 
     @media (min-width: 640px) {
       .trust-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
-      .services-grid, .testimonials-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .packages-preview, .testimonials-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .reviews-summary { grid-template-columns: auto 1fr auto; text-align: left; }
     }
     @media (min-width: 920px) {
       .menu-toggle, .mobile-menu { display: none !important; }
       .nav-links { display: flex; }
-      .services-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .packages-preview { grid-template-columns: repeat(3, minmax(0,1fr)); }
       .steps-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
       .why-grid, .testimonials-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .appointment-wrap, .contact-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .contact-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
   </style>
 </head>
 <body>
   <header class="navbar" id="navbar">
     <div class="container nav-inner">
-      <a href="#top" aria-label="Pilot Garage Ana Sayfa">
+      <a href="index.html" aria-label="Pilot Garage Ana Sayfa">
         <img class="logo" src="logo6.svg" alt="Pilot Garage Bodrum Logo" />
       </a>
       <div class="nav-right">
         <nav class="nav-links" aria-label="Ana gezinme">
+          <a href="index.html">Ana Sayfa</a>
           <a href="hizmetler.html">Hizmetler</a>
-          <a href="nasil-calisir.html">Nasil Calisir</a>
+          <a href="nasil-calisir.html">Nasıl Çalışır</a>
           <a href="yorumlar.html">Yorumlar</a>
-          <a href="iletisim.html">Iletisim</a>
+          <a href="iletisim.html">İletişim</a>
         </nav>
-        <a class="btn btn-primary" href="#appointment">Randevu Al</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Menuyu ac/kapat" aria-expanded="false" aria-controls="mobileMenu">
+        <a class="btn btn-wa" data-whatsapp href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0012.04 0C5.49 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.86 11.86 0 005.74 1.46h.01c6.54 0 11.87-5.34 11.87-11.9 0-3.18-1.24-6.17-3.4-8.43zM12.04 21.8a9.86 9.86 0 01-5.04-1.38l-.36-.21-3.74.98 1-3.64-.24-.37a9.84 9.84 0 01-1.51-5.27c0-5.44 4.43-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.9 6.99c0 5.45-4.43 9.88-9.89 9.88zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+          Randevu Al
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="mobileMenu">
           <span></span><span></span><span></span>
         </button>
       </div>
       <nav class="mobile-menu" id="mobileMenu" aria-label="Mobil gezinme">
+        <a href="index.html">Ana Sayfa</a>
         <a href="hizmetler.html">Hizmetler</a>
-        <a href="nasil-calisir.html">Nasil Calisir</a>
+        <a href="nasil-calisir.html">Nasıl Çalışır</a>
         <a href="yorumlar.html">Yorumlar</a>
-        <a href="#appointment">Randevu Al</a>
-        <a href="iletisim.html">Iletisim</a>
+        <a href="iletisim.html">İletişim</a>
+        <a data-whatsapp href="#">WhatsApp'tan Randevu Al</a>
       </nav>
     </div>
   </header>
@@ -298,73 +326,80 @@
       </div>
       <div class="container hero-grid">
         <div class="hero-content reveal">
-          <span class="hero-kicker">Bodrum'da Guvenilir Ekspertiz</span>
-          <h1>Aracinizi Guvenle Alin veya Satin</h1>
-          <p>Bodrum'da TSE belgeli, tarafsiz ve hizli oto ekspertiz hizmeti.</p>
+          <span class="hero-kicker">Bodrum'da Güvenilir Ekspertiz</span>
+          <h1>Aracınızı Güvenle Alın veya Satın</h1>
+          <p>Bodrum'da TSE belgeli, tarafsız ve hızlı oto ekspertiz hizmeti. Blackbox, Business ve Firstclass paketleriyle ihtiyacınıza uygun çözüm.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#appointment">Ekspertiz Randevusu Al</a>
-            <a class="btn btn-outline" href="tel:+90252XXXXXXX">Hemen Ara</a>
+            <a class="btn btn-wa" data-whatsapp href="#">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0012.04 0C5.49 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.86 11.86 0 005.74 1.46h.01c6.54 0 11.87-5.34 11.87-11.9 0-3.18-1.24-6.17-3.4-8.43zM12.04 21.8a9.86 9.86 0 01-5.04-1.38l-.36-.21-3.74.98 1-3.64-.24-.37a9.84 9.84 0 01-1.51-5.27c0-5.44 4.43-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.9 6.99c0 5.45-4.43 9.88-9.89 9.88zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+              WhatsApp'tan Randevu Al
+            </a>
+            <a class="btn btn-outline" data-phone href="#">Hemen Ara</a>
           </div>
-          <div class="bg-dots" id="bgDots" aria-label="Arka plan gorsel secici"></div>
+          <div class="bg-dots" id="bgDots" aria-label="Arka plan görsel seçici"></div>
         </div>
       </div>
     </section>
 
     <section class="trust-bar">
       <div class="container trust-grid">
-        <p class="trust-item">Turkiye Genelinde 350+ Sube</p>
+        <p class="trust-item">Türkiye Genelinde 350+ Şube</p>
         <p class="trust-item">TSE Belgeli Hizmet</p>
         <p class="trust-item">10.000+ Ekspertiz</p>
-        <p class="trust-item">2011'den beri guven</p>
+        <p class="trust-item">2011'den beri güven</p>
       </div>
     </section>
 
-    <section class="section" id="services">
+    <section class="section" id="packages">
       <div class="container">
-        <h2 class="section-title reveal">Hizmetlerimiz</h2>
-        <p class="section-subtitle reveal">Arac alirken veya satarken riskleri azaltan profesyonel kontrolleri tek noktada sunuyoruz.</p>
-        <div class="services-grid">
-          <article class="card reveal">
-            <div class="icon-wrap">🔧</div>
-            <h3>Full Arac Ekspertizi</h3>
-            <p>Motor, sase, boya, kaporta, fren ve elektronik sistemler dahil kapsamli kontrol.</p>
-            <a class="learn-link" href="#appointment">Detayli Bilgi</a>
+        <h2 class="section-title reveal">Ekspertiz Paketlerimiz</h2>
+        <p class="section-subtitle reveal">İhtiyacınıza en uygun paketi seçin. Detaylı içerik ve fiyat için paket içeriğine tıklayın.</p>
+        <div class="packages-preview">
+          <article class="pkg-card reveal" style="--accent:#0b0b0b">
+            <span class="pkg-tag">BLACKBOX</span>
+            <h3>Temel Ekspertiz</h3>
+            <p>Aracın genel teknik durumunu hızlıca görmek isteyenler için temel kontrol paketi.</p>
+            <a class="learn-link" href="hizmetler.html#blackbox">Detayları Gör →</a>
           </article>
-          <article class="card reveal">
-            <div class="icon-wrap">📈</div>
-            <h3>Dyno Testi</h3>
-            <p>Aracinizin gercek beygir gucu ve tork degerlerini olcup performans durumunu raporlariz.</p>
-            <a class="learn-link" href="#appointment">Detayli Bilgi</a>
+          <article class="pkg-card pkg-popular reveal" style="--accent:#d90429">
+            <div class="pkg-popular-badge">EN POPÜLER</div>
+            <span class="pkg-tag">BUSINESS</span>
+            <h3>Detaylı Ekspertiz</h3>
+            <p>İkinci el alım-satımda en çok tercih edilen, detaylı kontrolleri içeren iş paketi.</p>
+            <a class="learn-link" href="hizmetler.html#business">Detayları Gör →</a>
           </article>
-          <article class="card reveal">
-            <div class="icon-wrap">💻</div>
-            <h3>Computest</h3>
-            <p>Ariza kodlari, sensor hatalari ve elektronik sistem sagligi icin detayli tarama.</p>
-            <a class="learn-link" href="#appointment">Detayli Bilgi</a>
+          <article class="pkg-card reveal" style="--accent:#b8860b">
+            <span class="pkg-tag">FIRSTCLASS</span>
+            <h3>Premium Ekspertiz</h3>
+            <p>Üst segment araçlar için tam kapsamlı kontrol ve performans testlerini içeren premium paket.</p>
+            <a class="learn-link" href="hizmetler.html#firstclass">Detayları Gör →</a>
           </article>
+        </div>
+        <div style="text-align:center;margin-top:28px" class="reveal">
+          <a class="btn btn-primary" href="hizmetler.html">Tüm Paket Detaylarını İncele</a>
         </div>
       </div>
     </section>
 
     <section class="section alt" id="how-it-works">
       <div class="container">
-        <h2 class="section-title reveal">Nasil Calisir?</h2>
-        <p class="section-subtitle reveal">Sadece 3 adimda net, tarafsiz ve guvenilir ekspertiz sonucu.</p>
+        <h2 class="section-title reveal">Nasıl Çalışır?</h2>
+        <p class="section-subtitle reveal">Sadece 3 adımda net, tarafsız ve güvenilir ekspertiz sonucu.</p>
         <div class="steps-grid">
           <article class="card reveal">
             <span class="step-number">1</span>
-            <h3>Randevu Olusturun</h3>
-            <p>Online formu doldurun veya telefonla uygun saatinizi secin.</p>
+            <h3>Randevu Oluşturun</h3>
+            <p>WhatsApp'tan veya telefonla uygun tarih ve saatinizi seçin.</p>
           </article>
           <article class="card reveal">
             <span class="step-number">2</span>
-            <h3>Aracinizi Getirin</h3>
-            <p>Yaklasik 45 dakikada tum teknik kontroller tamamlanir.</p>
+            <h3>Aracınızı Getirin</h3>
+            <p>Yaklaşık 45 dakikada tüm teknik kontroller tamamlanır.</p>
           </article>
           <article class="card reveal">
             <span class="step-number">3</span>
-            <h3>Raporu Aninda Alin</h3>
-            <p>Dijital raporunuzla guvenle alim-satim kararini verin.</p>
+            <h3>Raporu Anında Alın</h3>
+            <p>Dijital raporunuzla güvenle alım-satım kararını verin.</p>
           </article>
         </div>
       </div>
@@ -374,71 +409,55 @@
       <div class="container">
         <h2 class="section-title reveal">Neden Pilot Garage Bodrum?</h2>
         <div class="why-grid">
-          <article class="card why-item reveal"><span class="why-icon">✓</span><p>Sertifikali ve tarafsiz uzman ekip</p></article>
-          <article class="card why-item reveal"><span class="why-icon">✓</span><p>Son teknoloji test ve olcum ekipmanlari</p></article>
-          <article class="card why-item reveal"><span class="why-icon">✓</span><p>Seffaf, TSE standartlarina uygun raporlama</p></article>
-          <article class="card why-item reveal"><span class="why-icon">✓</span><p>350+ subeli franchise guvencesi</p></article>
+          <article class="card why-item reveal"><span class="why-icon">✓</span><p>Sertifikalı ve tarafsız uzman ekip</p></article>
+          <article class="card why-item reveal"><span class="why-icon">✓</span><p>Son teknoloji test ve ölçüm ekipmanları</p></article>
+          <article class="card why-item reveal"><span class="why-icon">✓</span><p>Şeffaf, TSE standartlarına uygun raporlama</p></article>
+          <article class="card why-item reveal"><span class="why-icon">✓</span><p>350+ şubeli franchise güvencesi</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="testimonials">
+    <section class="section alt" id="reviews">
       <div class="container">
-        <h2 class="section-title reveal">Musteri Yorumlari</h2>
-        <div class="testimonials-grid">
-          <article class="card reveal">
-            <div class="quote">"</div>
-            <p>Bodrum'da alacagim arac icin burada ekspertiz yaptirdim. Rapor cok net ve anlasilirdi.</p>
-            <h3>Mehmet K.</h3>
-          </article>
-          <article class="card reveal">
-            <div class="quote">"</div>
-            <p>Randevu saati, iletisim ve hiz cok iyiydi. Computest sonucu sayesinde gizli arizayi gorduk.</p>
-            <h3>Ayse D.</h3>
-          </article>
-          <article class="card reveal">
-            <div class="quote">"</div>
-            <p>Dyno + full ekspertiz yaptirdim. Satis oncesi kafamdaki tum soru isaretleri bitti.</p>
-            <h3>Burak T.</h3>
-          </article>
+        <h2 class="section-title reveal">Müşteri Yorumları</h2>
+        <p class="section-subtitle reveal">Gerçek müşterilerimizin Google'daki geri bildirimleri.</p>
+
+        <div class="reviews-summary reveal">
+          <div class="rating-main">
+            <div class="rating-number" data-google-rating>4.9</div>
+            <div class="rating-stars" aria-hidden="true">★★★★★</div>
+            <div class="rating-meta"><strong data-google-count>120</strong> Google yorumu</div>
+          </div>
+          <div class="google-logo">
+            <span class="g-colored">Google</span>
+            <span>Yorumları</span>
+          </div>
+          <div class="reviews-cta">
+            <a class="btn" data-google-profile href="#">Google'da Tüm Yorumları Gör →</a>
+          </div>
         </div>
+
+        <!-- Elfsight canli Google yorumlari widget'i (config.js > googleReviewsEmbed) -->
+        <div data-google-widget class="reveal" style="margin-top:22px"></div>
       </div>
     </section>
 
     <section class="section cta-band">
       <div class="container cta-inner reveal">
-        <h2 class="section-title">Uzman Gormeden Arac Almayin</h2>
-        <a href="#appointment" class="btn">Bugun Randevu Olusturun</a>
+        <h2 class="section-title">Uzman Görmeden Araç Almayın</h2>
+        <a class="btn" data-whatsapp href="#">Bugün WhatsApp'tan Randevu Oluşturun</a>
       </div>
     </section>
 
-    <section class="section" id="appointment">
-      <div class="container appointment-wrap">
-        <div class="reveal">
-          <h2 class="section-title">Ekspertiz Randevu Formu</h2>
-          <p class="section-subtitle">Bilgilerinizi birakin, ekibimiz sizinle en kisa surede iletisime gecsin.</p>
-        </div>
-        <div class="card reveal">
-          <form class="appointment-form" id="appointmentForm">
-            <div class="field"><label for="name">Ad Soyad</label><input id="name" name="name" type="text" placeholder="Adinizi yazin" required /></div>
-            <div class="field"><label for="phone">Telefon</label><input id="phone" name="phone" type="tel" placeholder="+90 5XX XXX XX XX" required /></div>
-            <div class="field"><label for="date">Tarih</label><input id="date" name="date" type="date" required /></div>
-            <div class="field"><label for="plate">Arac Plakasi</label><input id="plate" name="plate" type="text" placeholder="34 ABC 123" required /></div>
-            <button class="btn btn-primary" type="submit">Randevu Talebi Gonder</button>
-          </form>
-          <p class="helper" id="formMessage">Form su an on yuz olarak calismaktadir.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="contact">
+    <section class="section" id="contact">
       <div class="container">
-        <h2 class="section-title reveal">Iletisim ve Konum</h2>
+        <h2 class="section-title reveal">İletişim ve Konum</h2>
         <div class="contact-grid">
           <div class="card reveal">
-            <p><strong>Adres:</strong><br />Kibris Sehitleri Cad, Cumhuriyet Mah, 1615. Sk. No:4, Bodrum/Mugla</p>
-            <p><strong>Telefon:</strong><br /><a href="tel:+90252XXXXXXX">+90 (252) XXX XX XX</a></p>
-            <p><strong>Calisma Saatleri:</strong><br />Pzt - Cmt: 08:30 - 18:30</p>
+            <p><strong>Adres:</strong><br />Kıbrıs Şehitleri Cad, Cumhuriyet Mah, 1615. Sk. No:4, Bodrum/Muğla</p>
+            <p style="margin-top:10px"><strong>Telefon:</strong><br /><a data-phone data-phone-text href="#">+90 (252) 000 00 00</a></p>
+            <p style="margin-top:10px"><strong>WhatsApp:</strong><br /><a data-whatsapp href="#">Mesaj Gönder</a></p>
+            <p style="margin-top:10px"><strong>Çalışma Saatleri:</strong><br />Pzt - Cmt: 08:30 - 18:30</p>
           </div>
           <div class="map-wrap reveal">
             <iframe
@@ -455,14 +474,11 @@
   </main>
 
   <footer class="footer">
-    <div class="container">© 2025 Pilot Garage Bodrum. Tum haklari saklidir.</div>
+    <div class="container">© 2025 Pilot Garage Bodrum. Tüm hakları saklıdır.</div>
   </footer>
 
-  <a class="whatsapp-float" href="https://wa.me/905000000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile iletisime gec">
-    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-      <path d="M19.1 17.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.8.2-.2.3-.9 1-1.1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.2-.7.2-.2.3-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 3 0 1.8 1.3 3.5 1.4 3.8.2.2 2.5 3.9 6.1 5.4.9.4 1.6.6 2.1.7.9.3 1.8.3 2.5.2.8-.1 2.4-1 2.8-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.2-.6-.4z"/>
-      <path d="M16.2 3.1C9.1 3.1 3.3 8.8 3.3 15.9c0 2.3.6 4.5 1.8 6.4L3.1 29l6.9-1.8c1.8 1 3.9 1.5 6.1 1.5h.1c7.1 0 12.9-5.7 12.9-12.8 0-3.4-1.3-6.7-3.8-9.1-2.4-2.4-5.6-3.7-9.1-3.7zm0 23.4h-.1c-1.9 0-3.8-.5-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6 0-5.9 4.9-10.7 10.8-10.7 2.9 0 5.6 1.1 7.6 3.2 2 2 3.2 4.8 3.2 7.6 0 5.9-4.9 10.7-10.7 10.7z"/>
-    </svg>
+  <a class="whatsapp-float" data-whatsapp href="#" aria-label="WhatsApp ile iletişime geç">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0012.04 0C5.49 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.86 11.86 0 005.74 1.46h.01c6.54 0 11.87-5.34 11.87-11.9 0-3.18-1.24-6.17-3.4-8.43zM12.04 21.8a9.86 9.86 0 01-5.04-1.38l-.36-.21-3.74.98 1-3.64-.24-.37a9.84 9.84 0 01-1.51-5.27c0-5.44 4.43-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.9 6.99c0 5.45-4.43 9.88-9.89 9.88zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
   </a>
 
   <script>
@@ -470,8 +486,6 @@
     const menuToggle = document.getElementById("menuToggle");
     const mobileMenu = document.getElementById("mobileMenu");
     const revealElements = document.querySelectorAll(".reveal");
-    const appointmentForm = document.getElementById("appointmentForm");
-    const formMessage = document.getElementById("formMessage");
     const bgLayers = [
       document.getElementById("bgLayer1"),
       document.getElementById("bgLayer2")
@@ -484,7 +498,6 @@
     function handleNavScroll() {
       navbar.classList.toggle("scrolled", window.scrollY > 24);
     }
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -493,7 +506,6 @@
         }
       });
     }, { threshold: 0.16 });
-
     revealElements.forEach((el) => observer.observe(el));
     window.addEventListener("scroll", handleNavScroll, { passive: true });
     handleNavScroll();
@@ -519,7 +531,6 @@
         bgDots.appendChild(dot);
       });
     }
-
     function setBackground(index, reset = false) {
       currentBg = (index + heroBackgrounds.length) % heroBackgrounds.length;
       bgLayers[0].style.backgroundImage = `url('${heroBackgrounds[currentBg]}')`;
@@ -530,16 +541,13 @@
       });
       if (reset) restartBackgroundAuto();
     }
-
     function restartBackgroundAuto() {
       clearInterval(bgTimer);
       bgTimer = setInterval(() => setBackground(currentBg + 1), 4500);
     }
-
     createBgDots();
     setBackground(0);
     restartBackgroundAuto();
-
     heroBackgrounds.forEach((src, index) => {
       const testImage = new Image();
       testImage.onerror = () => {
@@ -548,13 +556,8 @@
       };
       testImage.src = src;
     });
-
-    appointmentForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      formMessage.textContent = "Tesekkurler! Randevu talebiniz alindi, ekibimiz kisa surede size ulasacak.";
-      formMessage.style.color = "#1f8f3f";
-      appointmentForm.reset();
-    });
   </script>
+  <script src="config.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

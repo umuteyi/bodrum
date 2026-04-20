@@ -3,30 +3,221 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yorumlar | Pilot Garage Bodrum</title>
+  <title>Google Yorumları | Pilot Garage Bodrum</title>
+  <meta name="description" content="Pilot Garage Bodrum Google yorumları ve müşteri geri bildirimleri." />
   <style>
-    :root{--red:#d90429;--border:#e7e7e7;--muted:#666}
-    *{box-sizing:border-box;margin:0;padding:0} body{font-family:Inter,Arial,sans-serif;color:#171717}
-    a{text-decoration:none;color:inherit}.container{width:min(1100px,92%);margin:0 auto}
-    .nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border)} .bar{min-height:76px;display:flex;justify-content:space-between;align-items:center}
-    .logo{width:150px}.btn{padding:11px 18px;border-radius:999px;background:var(--red);color:#fff;font-weight:700}
-    .hero{padding:60px 0;background:#101010;color:#fff}.hero p{margin-top:10px;color:#d4d4d4}
-    .list{padding:66px 0;display:grid;gap:16px}
-    .card{border:1px solid var(--border);border-radius:14px;padding:22px;background:#fff}
-    .name{font-weight:800;margin-top:10px}.meta{color:var(--muted);font-size:.92rem}
-    .q{color:var(--red);font-size:1.9rem;line-height:1}
-    .footer{padding:22px 0;background:#111;color:#ccc;text-align:center}
+    :root {
+      --red:#d90429; --red-dark:#b10222; --border:#e7e7e7; --muted:#666;
+      --radius:16px; --shadow:0 18px 42px rgba(0,0,0,.12);
+      --wa:#25d366; --wa-dark:#128c4a;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#171717;line-height:1.6;background:#fff}
+    a{text-decoration:none;color:inherit}
+    img,svg{display:block;max-width:100%}
+    .container{width:min(1100px,92%);margin:0 auto}
+
+    .navbar{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:1000}
+    .nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative}
+    .logo{width:clamp(120px,18vw,160px)}
+    .nav-right{display:flex;align-items:center;gap:12px}
+    .nav-links{display:none;gap:18px}
+    .nav-links a{color:#2a2a2a;font-weight:700;font-size:.95rem;padding:8px 10px;border-radius:999px;transition:.2s ease}
+    .nav-links a:hover{background:#f3f3f3;color:var(--red)}
+    .nav-links a.active{color:var(--red)}
+    .menu-toggle{width:40px;height:40px;border-radius:10px;border:1px solid #d9d9d9;background:#fff;color:#111;cursor:pointer;display:inline-grid;place-items:center}
+    .menu-toggle span{width:18px;height:2px;background:#111;display:block;margin:2px 0}
+    .mobile-menu{position:absolute;top:72px;left:0;right:0;background:#fff;border:1px solid #e8e8e8;border-radius:14px;box-shadow:var(--shadow);padding:10px;display:none}
+    .mobile-menu.open{display:grid;gap:6px}
+    .mobile-menu a{color:#222;padding:10px 12px;border-radius:9px;font-weight:700}
+    .mobile-menu a:hover{background:#f5f5f5;color:var(--red)}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:700;transition:.2s ease;cursor:pointer;border:1px solid transparent}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--red);color:#fff}
+    .btn-primary:hover{background:var(--red-dark)}
+    .btn-wa{background:var(--wa);color:#fff}
+    .btn-wa:hover{background:var(--wa-dark)}
+    .btn-google{background:#fff;color:#111;border:1px solid #dadce0}
+    .btn-google:hover{background:#f8f9fa}
+    .btn svg{width:18px;height:18px;fill:currentColor}
+
+    .hero{padding:66px 0;background:#101010;color:#fff;text-align:center}
+    .hero h1{font-size:clamp(1.9rem,5vw,3rem)}
+    .hero p{margin-top:10px;color:#d4d4d4;max-width:60ch;margin-left:auto;margin-right:auto}
+
+    .summary-wrap{padding:48px 0}
+    .rating-card{
+      background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+      padding:36px 28px;text-align:center;box-shadow:0 14px 34px rgba(0,0,0,.06);
+      display:grid;gap:22px;align-items:center;
+    }
+    .rating-num{font-size:3.8rem;font-weight:800;line-height:1;color:#111}
+    .rating-stars{color:#fbbc04;font-size:1.6rem;letter-spacing:3px;margin-top:6px}
+    .rating-meta{color:var(--muted);margin-top:6px}
+    .rating-meta strong{color:#111}
+    .google-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-weight:800;font-size:1.1rem;
+    }
+    .g-colored{
+      background:linear-gradient(90deg,#4285f4 0%,#4285f4 25%,#ea4335 25%,#ea4335 50%,#fbbc04 50%,#fbbc04 75%,#34a853 75%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900
+    }
+
+    .reviews-list{padding:10px 0 64px;display:grid;gap:18px}
+    .review-card{
+      background:#fff;border:1px solid var(--border);border-radius:14px;
+      padding:24px;box-shadow:0 10px 24px rgba(0,0,0,.05);
+    }
+    .review-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .avatar{
+      width:48px;height:48px;border-radius:50%;
+      background:linear-gradient(135deg,#d90429,#b10222);
+      color:#fff;font-weight:800;display:grid;place-items:center;font-size:1.1rem
+    }
+    .review-name{font-weight:800;font-size:1.02rem;line-height:1.2}
+    .review-stars{color:#fbbc04;font-size:.98rem;letter-spacing:1px;margin-top:3px}
+    .review-body{color:#333}
+    .review-footer{
+      display:flex;justify-content:space-between;align-items:center;
+      margin-top:14px;padding-top:12px;border-top:1px solid #f2f2f2;
+      font-size:.85rem;color:var(--muted);
+    }
+    .review-source{display:inline-flex;align-items:center;gap:6px}
+    .review-source::before{
+      content:"G";display:inline-grid;place-items:center;
+      width:18px;height:18px;border-radius:50%;
+      background:linear-gradient(135deg,#4285f4,#34a853);color:#fff;
+      font-weight:900;font-size:.72rem;
+    }
+
+    .info-box{
+      margin:0 0 28px;padding:16px 18px;background:#f1f7ff;
+      border:1px solid #cfe4ff;border-radius:12px;color:#0a3a70;font-size:.92rem;
+    }
+    .info-box strong{color:#073163}
+
+    .cta-band{background:linear-gradient(100deg,#b10222,#d90429 45%,#f1284c);color:#fff;padding:54px 0;text-align:center}
+    .cta-band .btn{margin-top:14px;background:#fff;color:#111}
+    .cta-band .btn:hover{background:#f4f4f4}
+
+    .footer{padding:24px 0;background:#0f0f0f;color:#ccc;text-align:center}
+
+    .whatsapp-float{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:50%;display:inline-grid;place-items:center;background:var(--wa);color:#fff;box-shadow:0 12px 26px rgba(0,0,0,.3);z-index:1050;transition:transform .2s ease}
+    .whatsapp-float:hover{transform:scale(1.05)}
+    .whatsapp-float svg{width:30px;height:30px;fill:currentColor}
+
+    @media(min-width:640px){
+      .rating-card{grid-template-columns:auto 1fr auto;text-align:left}
+      .reviews-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(min-width:920px){
+      .menu-toggle,.mobile-menu{display:none !important}
+      .nav-links{display:flex}
+    }
   </style>
 </head>
 <body>
-  <header class="nav"><div class="container bar"><a href="index.html"><img class="logo" src="logo6.svg" alt="Logo"></a><a class="btn" href="index.html#appointment">Randevu Al</a></div></header>
-  <section class="hero"><div class="container"><h1>Musteri Yorumlari</h1><p>Bodrum'da hizmet alan musterilerimizin geri bildirimleri.</p></div></section>
-  <section class="container list">
-    <article class="card"><div class="q">"</div><p>Arac almadan once yaptirdigim ekspertiz sayesinde ciddi masraf cikaracak sorunu onceden gordum.</p><div class="name">Mehmet K.</div><div class="meta">Bodrum - Full Ekspertiz</div></article>
-    <article class="card"><div class="q">"</div><p>Randevu, karsilama, surec ve raporlama cok profesyoneldi. Ozellikle computest aciklamalari cok netti.</p><div class="name">Ayse D.</div><div class="meta">Bodrum - Computest</div></article>
-    <article class="card"><div class="q">"</div><p>Dyno testi sonucunda arac performansini net gordum. Alici ile pazarlikta rapor cok ise yaradi.</p><div class="name">Burak T.</div><div class="meta">Bodrum - Dyno Testi</div></article>
-    <article class="card"><div class="q">"</div><p>Ayni gun icinde tum testleri tamamlayip detayli raporu mail olarak da paylastilar.</p><div class="name">Selin A.</div><div class="meta">Bodrum - Hizli Randevu</div></article>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" aria-label="Pilot Garage Ana Sayfa">
+        <img class="logo" src="logo6.svg" alt="Pilot Garage Logo">
+      </a>
+      <div class="nav-right">
+        <nav class="nav-links" aria-label="Ana gezinme">
+          <a href="index.html">Ana Sayfa</a>
+          <a href="hizmetler.html">Hizmetler</a>
+          <a href="nasil-calisir.html">Nasıl Çalışır</a>
+          <a href="yorumlar.html" class="active">Yorumlar</a>
+          <a href="iletisim.html">İletişim</a>
+        </nav>
+        <a class="btn btn-wa" data-whatsapp href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0012.04 0C5.49 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.86 11.86 0 005.74 1.46h.01c6.54 0 11.87-5.34 11.87-11.9 0-3.18-1.24-6.17-3.4-8.43zM12.04 21.8a9.86 9.86 0 01-5.04-1.38l-.36-.21-3.74.98 1-3.64-.24-.37a9.84 9.84 0 01-1.51-5.27c0-5.44 4.43-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.9 6.99c0 5.45-4.43 9.88-9.89 9.88zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+          Randevu Al
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobil gezinme">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hizmetler.html">Hizmetler</a>
+        <a href="nasil-calisir.html">Nasıl Çalışır</a>
+        <a href="yorumlar.html">Yorumlar</a>
+        <a href="iletisim.html">İletişim</a>
+        <a data-whatsapp href="#">WhatsApp'tan Randevu Al</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Google Yorumları</h1>
+      <p>Bodrum'da hizmet aldığımız müşterilerimizin Google'daki gerçek geri bildirimleri.</p>
+    </div>
   </section>
-  <footer class="footer">© 2025 Pilot Garage Bodrum</footer>
+
+  <section class="summary-wrap">
+    <div class="container">
+      <div class="rating-card">
+        <div>
+          <div class="rating-num" data-google-rating>4.9</div>
+          <div class="rating-stars" aria-hidden="true">★★★★★</div>
+          <div class="rating-meta"><strong data-google-count>120</strong> Google yorumu</div>
+        </div>
+        <div class="google-badge">
+          <span class="g-colored">Google</span>
+          <span>Yorumları</span>
+        </div>
+        <a class="btn btn-google" data-google-profile href="#">Google'da Tüm Yorumları Gör →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GOOGLE YORUMLARI CANLI WIDGET ALANI
+       Elfsight / Trustindex / SociableKit embed kodunu config.js'e
+       yapistirdiktan sonra bu alan otomatik doldurulur.
+       ============================================================ -->
+  <section class="container" style="padding:0 0 16px">
+    <div data-google-widget></div>
+  </section>
+
+  <section class="container">
+    <div style="text-align:center;padding:24px 0 60px">
+      <a class="btn btn-google" data-google-reviews href="#">Google'da Tüm Yorumları Oku →</a>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <h2>Siz de güvenle alım-satım yapın</h2>
+      <a class="btn" data-whatsapp href="#">WhatsApp'tan Randevu Al</a>
+    </div>
+  </section>
+
+  <footer class="footer">© 2025 Pilot Garage Bodrum. Tüm hakları saklıdır.</footer>
+
+  <a class="whatsapp-float" data-whatsapp href="#" aria-label="WhatsApp ile iletişime geç">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0012.04 0C5.49 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.86 11.86 0 005.74 1.46h.01c6.54 0 11.87-5.34 11.87-11.9 0-3.18-1.24-6.17-3.4-8.43zM12.04 21.8a9.86 9.86 0 01-5.04-1.38l-.36-.21-3.74.98 1-3.64-.24-.37a9.84 9.84 0 01-1.51-5.27c0-5.44 4.43-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.9 6.99c0 5.45-4.43 9.88-9.89 9.88zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+  </a>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+  <script src="config.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

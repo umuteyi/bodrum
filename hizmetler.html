@@ -3,86 +3,280 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hizmetler | Pilot Garage Bodrum</title>
+  <title>Ekspertiz Paketleri | Pilot Garage Bodrum</title>
+  <meta name="description" content="Pilot Garage Bodrum ekspertiz paketleri: Blackbox, Business ve Firstclass. Detaylı raporlama ve profesyonel ekip." />
   <style>
-    :root { --red:#d90429; --red-dark:#b10222; --text:#181818; --muted:#666; --border:#e8e8e8; --radius:14px; }
-    *{box-sizing:border-box;margin:0;padding:0} body{font-family:Inter,Arial,sans-serif;color:var(--text);background:#fff;line-height:1.6}
-    a{text-decoration:none;color:inherit} .container{width:min(1120px,92%);margin:0 auto}
-    .navbar{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:20}
-    .nav-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between}
-    .logo{width:150px} .btn{padding:11px 18px;border-radius:999px;font-weight:700}
-    .btn-primary{background:var(--red);color:#fff}.btn-primary:hover{background:var(--red-dark)}
-    .hero{padding:60px 0;background:linear-gradient(120deg,#111,#1d1d1d);color:#fff}
-    .hero h1{font-size:clamp(2rem,5vw,3rem);line-height:1.1}.hero p{margin-top:10px;color:#ddd;max-width:62ch}
-    .section{padding:62px 0}.grid{display:grid;grid-template-columns:1fr;gap:16px}
-    .card{border:1px solid var(--border);border-radius:var(--radius);padding:22px;background:#fff}
-    .card h3{margin-bottom:8px}.card p{color:var(--muted)}
-    .tag{display:inline-block;background:#ffe9ed;color:var(--red);padding:4px 10px;border-radius:999px;font-weight:700;font-size:.85rem;margin-bottom:10px}
-    ul{padding-left:18px;color:#444}
-    .footer{padding:22px 0;background:#111;color:#ccc;text-align:center}
-    @media(min-width:860px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    :root {
+      --red:#d90429; --red-dark:#b10222; --text:#181818; --muted:#666;
+      --border:#e8e8e8; --radius:16px; --shadow:0 18px 42px rgba(0,0,0,.12);
+      --wa:#25d366; --wa-dark:#128c4a; --gold:#b8860b; --gold-dark:#8b6508;
+      --black:#0b0b0b;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--text);background:#fff;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img,svg{display:block;max-width:100%}
+    .container{width:min(1180px,92%);margin:0 auto}
+
+    .navbar{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:1000}
+    .nav-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative}
+    .logo{width:clamp(120px,18vw,160px)}
+    .nav-right{display:flex;align-items:center;gap:12px}
+    .nav-links{display:none;gap:18px}
+    .nav-links a{color:#2a2a2a;font-weight:700;font-size:.95rem;padding:8px 10px;border-radius:999px;transition:.2s ease}
+    .nav-links a:hover{background:#f3f3f3;color:var(--red)}
+    .nav-links a.active{color:var(--red)}
+    .menu-toggle{width:40px;height:40px;border-radius:10px;border:1px solid #d9d9d9;background:#fff;color:#111;cursor:pointer;display:inline-grid;place-items:center}
+    .menu-toggle span{width:18px;height:2px;background:#111;display:block;margin:2px 0}
+    .mobile-menu{position:absolute;top:74px;left:0;right:0;background:#fff;border:1px solid #e8e8e8;border-radius:14px;box-shadow:var(--shadow);padding:10px;display:none}
+    .mobile-menu.open{display:grid;gap:6px}
+    .mobile-menu a{color:#222;padding:10px 12px;border-radius:9px;font-weight:700}
+    .mobile-menu a:hover{background:#f5f5f5;color:var(--red)}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:700;transition:.2s ease;cursor:pointer;border:1px solid transparent}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--red);color:#fff}
+    .btn-primary:hover{background:var(--red-dark)}
+    .btn-dark{background:#111;color:#fff}
+    .btn-dark:hover{background:#333}
+    .btn-gold{background:var(--gold);color:#fff}
+    .btn-gold:hover{background:var(--gold-dark)}
+    .btn-wa{background:var(--wa);color:#fff}
+    .btn-wa:hover{background:var(--wa-dark)}
+    .btn-outline-dark{border:1px solid #1a1a1a;color:#111;background:#fff}
+    .btn-outline-dark:hover{background:#111;color:#fff}
+    .btn svg{width:18px;height:18px;fill:currentColor}
+
+    .hero{padding:72px 0 56px;background:linear-gradient(120deg,#0a0a0a,#1d1d1d);color:#fff;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,3rem);line-height:1.1}
+    .hero p{margin-top:12px;color:#ddd;max-width:60ch;margin-left:auto;margin-right:auto}
+
+    .packages{padding:56px 0}
+    .packages-grid{display:grid;grid-template-columns:1fr;gap:22px}
+    .pkg{
+      position:relative;background:#fff;border:1.5px solid var(--border);
+      border-radius:var(--radius);padding:32px 26px 28px;
+      box-shadow:0 14px 34px rgba(0,0,0,.05);
+      display:flex;flex-direction:column;gap:14px;
+      transition:.25s ease;overflow:hidden;
+    }
+    .pkg:hover{transform:translateY(-4px);box-shadow:0 22px 48px rgba(0,0,0,.1)}
+    .pkg::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:6px;
+      background:var(--accent);
+    }
+    .pkg-tag{
+      display:inline-block;font-weight:900;letter-spacing:2.5px;
+      font-size:.82rem;color:var(--accent);margin-top:4px;
+    }
+    .pkg h3{font-size:1.42rem;line-height:1.2}
+    .pkg-subtitle{color:var(--muted);font-size:.95rem;margin-top:-6px}
+    .pkg ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:8px}
+    .pkg ul li{
+      display:flex;gap:10px;align-items:flex-start;color:#333;font-size:.95rem;
+    }
+    .pkg ul li::before{
+      content:"";flex-shrink:0;width:18px;height:18px;border-radius:50%;
+      background:var(--accent);color:#fff;display:grid;place-items:center;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='white'><path d='M4.6 8.6L2.4 6.4l-1 1 3.2 3.2 6.8-6.8-1-1z'/></svg>");
+      background-repeat:no-repeat;background-position:center;background-size:12px 12px;
+      margin-top:3px;
+    }
+    .pkg-actions{display:flex;gap:10px;margin-top:auto;padding-top:14px;flex-wrap:wrap}
+    .pkg-actions .btn{padding:11px 18px;font-size:.95rem;flex:1;min-width:140px}
+    .pkg-popular{
+      border-color:var(--red);
+      box-shadow:0 22px 48px rgba(217,4,41,.14);
+    }
+    .pkg-popular-badge{
+      position:absolute;top:18px;right:18px;
+      background:var(--red);color:#fff;
+      font-size:.7rem;font-weight:800;letter-spacing:1.5px;
+      padding:5px 11px;border-radius:999px;
+    }
+
+    /* Tek tek ek hizmetler */
+    .extras{padding:56px 0;background:#f8f8f8}
+    .extras h2{margin-bottom:10px}
+    .extras p.sub{color:var(--muted);max-width:60ch;margin-bottom:28px}
+    .extras-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .extra-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:0 10px 24px rgba(0,0,0,.04)}
+    .extra-card .tag{display:inline-block;background:#ffe9ed;color:var(--red);padding:4px 10px;border-radius:999px;font-weight:700;font-size:.82rem;margin-bottom:10px}
+    .extra-card h3{margin-bottom:6px}
+    .extra-card p{color:var(--muted)}
+
+    .cta-band{background:linear-gradient(100deg,#b10222,#d90429 45%,#f1284c);color:#fff;padding:54px 0;text-align:center}
+    .cta-band h2{margin-bottom:4px}
+    .cta-band p{color:#ffd9df;margin-bottom:14px}
+    .cta-band .btn{background:#fff;color:#111}
+    .cta-band .btn:hover{background:#f4f4f4}
+
+    .footer{padding:24px 0;background:#0f0f0f;color:#ccc;text-align:center}
+
+    .whatsapp-float{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:50%;display:inline-grid;place-items:center;background:var(--wa);color:#fff;box-shadow:0 12px 26px rgba(0,0,0,.3);z-index:1050;transition:transform .2s ease}
+    .whatsapp-float:hover{transform:scale(1.05)}
+    .whatsapp-float svg{width:30px;height:30px;fill:currentColor}
+
+    @media(min-width:720px){
+      .packages-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+      .extras-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    @media(min-width:920px){
+      .menu-toggle,.mobile-menu{display:none !important}
+      .nav-links{display:flex}
+    }
   </style>
 </head>
 <body>
   <header class="navbar">
     <div class="container nav-inner">
-      <a href="index.html"><img class="logo" src="logo6.svg" alt="Pilot Garage Logo"></a>
-      <a class="btn btn-primary" href="index.html#appointment">Randevu Al</a>
+      <a href="index.html" aria-label="Pilot Garage Ana Sayfa">
+        <img class="logo" src="logo6.svg" alt="Pilot Garage Logo">
+      </a>
+      <div class="nav-right">
+        <nav class="nav-links" aria-label="Ana gezinme">
+          <a href="index.html">Ana Sayfa</a>
+          <a href="hizmetler.html" class="active">Hizmetler</a>
+          <a href="nasil-calisir.html">Nasıl Çalışır</a>
+          <a href="yorumlar.html">Yorumlar</a>
+          <a href="iletisim.html">İletişim</a>
+        </nav>
+        <a class="btn btn-wa" data-whatsapp href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0012.04 0C5.49 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.86 11.86 0 005.74 1.46h.01c6.54 0 11.87-5.34 11.87-11.9 0-3.18-1.24-6.17-3.4-8.43zM12.04 21.8a9.86 9.86 0 01-5.04-1.38l-.36-.21-3.74.98 1-3.64-.24-.37a9.84 9.84 0 01-1.51-5.27c0-5.44 4.43-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.9 6.99c0 5.45-4.43 9.88-9.89 9.88zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+          Randevu Al
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobil gezinme">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hizmetler.html">Hizmetler</a>
+        <a href="nasil-calisir.html">Nasıl Çalışır</a>
+        <a href="yorumlar.html">Yorumlar</a>
+        <a href="iletisim.html">İletişim</a>
+        <a data-whatsapp href="#">WhatsApp'tan Randevu Al</a>
+      </nav>
     </div>
   </header>
 
   <section class="hero">
     <div class="container">
-      <h1>Detayli Hizmetlerimiz</h1>
-      <p>Pilot Garage Bodrum'da uygulanan tum kontroller standart prosedurlerle yapilir. Her hizmet sonunda dijital raporlama sunulur.</p>
+      <h1>Ekspertiz Paketlerimiz</h1>
+      <p>İhtiyacınıza en uygun paketi seçin. Paket içeriğini incelemek için kart üzerindeki "Paket İçeriği" butonuna tıklayın, resmi broşür anında açılır.</p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container grid">
-      <article class="card">
-        <span class="tag">Full Ekspertiz</span>
-        <h3>Arac Genel Kontrol Paketi</h3>
-        <p>Aracinizin tum kritik noktalarini tek oturumda kontrol ederiz.</p>
-        <ul>
-          <li>Motor mekanik kontrolu</li>
-          <li>Sase ve alt takim incelemesi</li>
-          <li>Boya-kaporta olcumu</li>
-          <li>Fren, suspansiyon ve yol testi</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="tag">Dyno Testi</span>
-        <h3>Performans ve Guc Olcumu</h3>
-        <p>Gercek motor cikis degerleri ve tork grafigi olusturulur.</p>
-        <ul>
-          <li>Beygir gucu olcumu</li>
-          <li>Tork ve devir analizi</li>
-          <li>Guc kaybi tespiti</li>
-          <li>Raporlu karsilastirma</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="tag">Computest</span>
-        <h3>Elektronik Sistem Taramasi</h3>
-        <p>Ariza lambalari, sensorler ve kontrol uniteleri detayli taranir.</p>
-        <ul>
-          <li>Ariza kodu analizi</li>
-          <li>Canli veri kontrolu</li>
-          <li>ECU / ABS / Airbag taramasi</li>
-          <li>Silinmis hata gecmisi kontrolu</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" style="background:#f8f8f8">
+  <section class="packages">
     <div class="container">
-      <h2 style="margin-bottom:14px">Neden Bu Kadar Detayli?</h2>
-      <p style="color:#666;max-width:70ch">Ikinci el arac alim-satiminda gizli riskleri onceden gormek icin detayli inceleme zorunludur. Pilot Garage Bodrum olarak, raporlarimizi sadece "var/yok" mantigi ile degil, teknik yorumlarla birlikte sunuyoruz.</p>
+      <div class="packages-grid">
+        <article id="blackbox" class="pkg" style="--accent:#0b0b0b">
+          <span class="pkg-tag">BLACKBOX</span>
+          <h3>Temel Ekspertiz Paketi</h3>
+          <p class="pkg-subtitle">Aracın genel teknik durumunu hızlıca görmek isteyenler için temel kontrol paketi.</p>
+          <ul>
+            <li>Motor genel kontrolü</li>
+            <li>Boya-kaporta ön inceleme</li>
+            <li>Fren ve süspansiyon kontrolü</li>
+            <li>Dijital rapor</li>
+          </ul>
+          <div class="pkg-actions">
+            <a class="btn btn-dark" data-pdf="BLACKBOX.pdf" data-pdf-name="Blackbox" href="javascript:void(0)" role="button">Paket İçeriği</a>
+            <a class="btn btn-wa" data-whatsapp data-whatsapp-message="Merhaba, Blackbox paketi hakkında bilgi almak istiyorum." href="#">Fiyat Al</a>
+          </div>
+        </article>
+
+        <article id="business" class="pkg pkg-popular" style="--accent:#d90429">
+          <div class="pkg-popular-badge">EN POPÜLER</div>
+          <span class="pkg-tag">BUSINESS</span>
+          <h3>Detaylı Ekspertiz Paketi</h3>
+          <p class="pkg-subtitle">İkinci el alım-satımda en çok tercih edilen, detaylı kontrolleri içeren iş paketi.</p>
+          <ul>
+            <li>Full motor ve şanzıman kontrolü</li>
+            <li>Mikronla boya kalınlık ölçümü</li>
+            <li>Computest (elektronik tarama)</li>
+            <li>Yol testi ve fren analizi</li>
+            <li>Detaylı dijital rapor</li>
+          </ul>
+          <div class="pkg-actions">
+            <a class="btn btn-primary" data-pdf="BUSINESS.pdf" data-pdf-name="Business" href="javascript:void(0)" role="button">Paket İçeriği</a>
+            <a class="btn btn-wa" data-whatsapp data-whatsapp-message="Merhaba, Business paketi hakkında bilgi almak istiyorum." href="#">Fiyat Al</a>
+          </div>
+        </article>
+
+        <article id="firstclass" class="pkg" style="--accent:#b8860b">
+          <span class="pkg-tag">FIRSTCLASS</span>
+          <h3>Premium Ekspertiz Paketi</h3>
+          <p class="pkg-subtitle">Üst segment araçlar için tam kapsamlı kontrol ve performans testlerini içeren premium paket.</p>
+          <ul>
+            <li>Business paket içeriğinin tümü</li>
+            <li>Dyno performans testi</li>
+            <li>Detaylı şase analizi</li>
+            <li>Klima ve elektrik sistem testi</li>
+            <li>Öncelikli randevu</li>
+          </ul>
+          <div class="pkg-actions">
+            <a class="btn btn-gold" data-pdf="FIRSTCLASS.pdf" data-pdf-name="Firstclass" href="javascript:void(0)" role="button">Paket İçeriği</a>
+            <a class="btn btn-wa" data-whatsapp data-whatsapp-message="Merhaba, Firstclass paketi hakkında bilgi almak istiyorum." href="#">Fiyat Al</a>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <footer class="footer">© 2025 Pilot Garage Bodrum</footer>
+  <section class="extras">
+    <div class="container">
+      <h2>Ek Hizmetlerimiz</h2>
+      <p class="sub">Paketlere dahil olmayan ama tek başına talep edebileceğiniz özel testler.</p>
+      <div class="extras-grid">
+        <article class="extra-card">
+          <span class="tag">Dyno Testi</span>
+          <h3>Performans ve Güç Ölçümü</h3>
+          <p>Gerçek motor çıkış değerleri ve tork grafiği; güç kaybı tespiti ve raporlu karşılaştırma.</p>
+        </article>
+        <article class="extra-card">
+          <span class="tag">Computest</span>
+          <h3>Elektronik Sistem Taraması</h3>
+          <p>Arıza kodu analizi, canlı veri kontrolü, ECU/ABS/Airbag taraması, silinmiş hata geçmişi.</p>
+        </article>
+        <article class="extra-card">
+          <span class="tag">Boya-Kaporta</span>
+          <h3>Mikron Ölçüm Detay</h3>
+          <p>Tüm panellerde milimetrik boya kalınlık ölçümü ve işçilik kalite değerlendirmesi.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <h2>Hangi paketin size uygun olduğundan emin değil misiniz?</h2>
+      <p>Size özel öneri için WhatsApp'tan bize yazın, 5 dakikada cevaplayalım.</p>
+      <a class="btn" data-whatsapp href="#">WhatsApp'tan Yazın</a>
+    </div>
+  </section>
+
+  <footer class="footer">© 2025 Pilot Garage Bodrum. Tüm hakları saklıdır.</footer>
+
+  <a class="whatsapp-float" data-whatsapp href="#" aria-label="WhatsApp ile iletişime geç">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0012.04 0C5.49 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.86 11.86 0 005.74 1.46h.01c6.54 0 11.87-5.34 11.87-11.9 0-3.18-1.24-6.17-3.4-8.43zM12.04 21.8a9.86 9.86 0 01-5.04-1.38l-.36-.21-3.74.98 1-3.64-.24-.37a9.84 9.84 0 01-1.51-5.27c0-5.44 4.43-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.9 6.99c0 5.45-4.43 9.88-9.89 9.88zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+  </a>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+  <script src="config.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
