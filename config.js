@@ -15,7 +15,7 @@ window.PILOT_CONFIG = {
   //  - Bosluk, parantez, tire KULLANMAYIN
   //  - Basindaki + isaretini YAZMAYIN
   //  - Ornek: 905321234567  (yani +90 532 123 45 67)
-  whatsappNumber: "905000000000",
+  whatsappNumber: "905324855189",
 
   // WhatsApp'a tiklandiginda otomatik gelen mesaj
   whatsappMessage:
@@ -56,8 +56,7 @@ window.PILOT_CONFIG = {
     title: "🎉 Özel Kampanya!",
     // HTML yazabilirsiniz (<strong>, <br> gibi etiketler calisir)
     body:
-      "Bu hafta tüm ekspertiz paketlerinde <strong>özel fiyatlar</strong>!<br>" +
-      "Full ekspertiz sadece <strong>2.500 ₺</strong>.",
+      "2500 ₺ başlayan hizmetlerle",
     ctaText: "WhatsApp'tan Yararlan",
     delaySeconds: 4,               // Kac saniye sonra gorunsun
 
