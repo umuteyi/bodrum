@@ -22,8 +22,8 @@ window.PILOT_CONFIG = {
     "Merhaba, Pilot Garage Bodrum için bilgi almak ve randevu oluşturmak istiyorum.",
 
   // Sabit / is telefonu (Hemen Ara butonlari icin)
-  phoneNumber: "+902520000000",
-  phoneDisplay: "+90 (252) 000 00 00",
+  phoneNumber: "+902523170472",
+  phoneDisplay: "0252 317 04 72",
 
   // ------------------------------------------------------------
   // GOOGLE PROFILI (Yorumlar bolumu icin)
@@ -52,7 +52,7 @@ window.PILOT_CONFIG = {
   // KAMPANYA POP-UP
   // ------------------------------------------------------------
   popup: {
-    enabled: true,                 // Kapatmak icin: false
+    enabled: false,                // Kapatmak icin: false  (acmak icin: true)
     title: "🎉 Özel Kampanya!",
     // HTML yazabilirsiniz (<strong>, <br> gibi etiketler calisir)
     body:
