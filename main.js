@@ -94,6 +94,13 @@
       }
     });
 
+    document.querySelectorAll("[data-mobile-phone]").forEach(function (el) {
+      el.setAttribute("href", "tel:" + (cfg.mobilePhoneNumber || ""));
+      if (el.hasAttribute("data-mobile-phone-text")) {
+        el.textContent = cfg.mobilePhoneDisplay || cfg.mobilePhoneNumber || "";
+      }
+    });
+
     document.querySelectorAll("[data-google-profile]").forEach(function (el) {
       el.setAttribute("href", cfg.googleProfileUrl || "#");
       el.setAttribute("target", "_blank");

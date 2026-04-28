@@ -24,6 +24,8 @@ window.PILOT_CONFIG = {
   // Sabit / is telefonu (Hemen Ara butonlari icin)
   phoneNumber: "+902523170472",
   phoneDisplay: "0252 317 04 72",
+  mobilePhoneNumber: "+905324855189",
+  mobilePhoneDisplay: "+90 532 485 51 89",
 
   // ------------------------------------------------------------
   // GOOGLE PROFILI (Yorumlar bolumu icin)
@@ -76,53 +78,53 @@ window.PILOT_CONFIG = {
   // PDF dosyalari site klasorunde olmali. "modal" acilinca icinde acilir.
   packages: [
     {
-      key: "blackbox",
-      name: "BLACKBOX",
-      subtitle: "Temel Ekspertiz Paketi",
+      key: "business",
+      name: "BUSINESS",
+      subtitle: "Başlangıç Ekspertiz Paketi",
       description:
-        "Aracın genel teknik durumunu hızlıca görmek isteyenler için temel kontrol paketi.",
+        "Standart kontrollerle aracın genel durumunu görmek isteyenler için giriş seviyesi paket.",
       features: [
         "Motor genel kontrolü",
         "Boya-kaporta ön inceleme",
         "Fren ve süspansiyon kontrolü",
         "Dijital rapor",
       ],
-      pdf: "BLACKBOX.pdf",
-      accent: "#0b0b0b",
+      pdf: "BUSINESS.pdf",
+      accent: "#d90429",
       popular: false,
     },
     {
-      key: "business",
-      name: "BUSINESS",
-      subtitle: "Detaylı Ekspertiz Paketi",
+      key: "firstclass",
+      name: "FIRSTCLASS",
+      subtitle: "Gelişmiş Ekspertiz Paketi",
       description:
-        "İkinci el alım-satımda en çok tercih edilen, detaylı kontrolleri içeren iş paketi.",
+        "Business paketine ek ileri testler ve detaylı analizler içeren orta-üst seviye paket.",
       features: [
-        "Full motor ve şanzıman kontrolü",
+        "Business paket içeriğinin tümü",
         "Mikronla boya kalınlık ölçümü",
         "Computest (elektronik tarama)",
         "Yol testi ve fren analizi",
         "Detaylı dijital rapor",
       ],
-      pdf: "BUSINESS.pdf",
-      accent: "#d90429",
+      pdf: "FIRSTCLASS.pdf",
+      accent: "#b8860b",
       popular: true,
     },
     {
-      key: "firstclass",
-      name: "FIRSTCLASS",
-      subtitle: "Premium Ekspertiz Paketi",
+      key: "blackbox",
+      name: "BLACKBOX",
+      subtitle: "Maksimum Ekspertiz Paketi",
       description:
-        "Üst segment araçlar için tam kapsamlı kontrol ve performans testlerini içeren premium paket.",
+        "En kapsamlı kontrol ve performans testlerini isteyenler için en detaylı ekspertiz paketi.",
       features: [
-        "Business paket içeriğinin tümü",
+        "Firstclass paket içeriğinin tümü",
         "Dyno performans testi",
         "Detaylı şase analizi",
         "Klima ve elektrik sistem testi",
         "Öncelikli randevu",
       ],
-      pdf: "FIRSTCLASS.pdf",
-      accent: "#b8860b",
+      pdf: "BLACKBOX.pdf",
+      accent: "#0b0b0b",
       popular: false,
     },
   ],
