@@ -27,6 +27,9 @@ window.PILOT_CONFIG = {
   mobilePhoneNumber: "+905324855189",
   mobilePhoneDisplay: "+90 532 485 51 89",
 
+  // Paket bolumlerinin ustundeki fiyat bandi metni (bos birakilirsa kutu gizlenir)
+  priceFromBanner: "2.500 ₺'den başlayan fiyatlarla",
+
   // ------------------------------------------------------------
   // GOOGLE PROFILI (Yorumlar bolumu icin)
   // ------------------------------------------------------------

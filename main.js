@@ -101,6 +101,20 @@
       }
     });
 
+    document.querySelectorAll("[data-price-from-banner]").forEach(function (el) {
+      var t = (cfg.priceFromBanner || "").trim();
+      if (t) {
+        el.textContent = t;
+        el.removeAttribute("hidden");
+      } else {
+        el.textContent = "";
+        el.setAttribute("hidden", "hidden");
+      }
+      if (t && el.classList.contains("reveal")) {
+        el.classList.add("show");
+      }
+    });
+
     document.querySelectorAll("[data-google-profile]").forEach(function (el) {
       el.setAttribute("href", cfg.googleProfileUrl || "#");
       el.setAttribute("target", "_blank");

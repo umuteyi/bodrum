@@ -87,6 +87,15 @@
     .hero p{margin-top:12px;color:#ddd;max-width:60ch;margin-left:auto;margin-right:auto}
 
     .packages{padding:56px 0}
+    .pkg-price-banner{
+      margin:0 auto 24px;max-width:min(560px,100%);
+      padding:14px 22px 14px 20px;border-radius:14px;text-align:center;
+      background:linear-gradient(135deg,#fff8f8 0%,#fff 42%,#fffaf5 100%);
+      border:1px solid rgba(217,4,41,.16);border-left:4px solid #d90429;
+      box-shadow:0 10px 32px rgba(217,4,41,.08);
+      font-weight:800;font-size:clamp(1rem,2.4vw,1.18rem);color:#141414;
+      letter-spacing:-.02em;line-height:1.35;
+    }
     .packages-grid{display:grid;grid-template-columns:1fr;gap:22px}
     .pkg{
       position:relative;background:#fff;border:1.5px solid var(--border);
@@ -207,6 +216,7 @@
 
   <section class="packages">
     <div class="container">
+      <p class="pkg-price-banner" data-price-from-banner role="note">2.500 ₺'den başlayan fiyatlarla</p>
       <div class="packages-grid">
         <article id="business" class="pkg" style="--accent:#d90429">
           <span class="pkg-tag">BUSINESS</span>

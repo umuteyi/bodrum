@@ -217,6 +217,23 @@
 
     .section.alt { background: #f7f7f7; }
 
+    /* Paket fiyat bandi */
+    .pkg-price-banner {
+      margin: 6px auto 26px; max-width: min(560px, 100%);
+      padding: 14px 22px 14px 20px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fff8f8 0%, #ffffff 42%, #fffaf5 100%);
+      border: 1px solid rgba(217, 4, 41, 0.16);
+      border-left: 4px solid #d90429;
+      box-shadow: 0 10px 32px rgba(217, 4, 41, 0.08);
+      font-weight: 800;
+      font-size: clamp(1rem, 2.4vw, 1.18rem);
+      color: #141414;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+      text-align: center;
+    }
+
     /* Paket onizleme kartlari */
     .packages-preview { display: grid; grid-template-columns: 1fr; gap: 18px; }
     .pkg-card {
@@ -431,6 +448,7 @@
       <div class="container">
         <h2 class="section-title reveal">Ekspertiz Paketlerimiz</h2>
         <p class="section-subtitle reveal">İhtiyacınıza en uygun paketi seçin. Detaylı içerik ve fiyat için paket içeriğine tıklayın.</p>
+        <p class="pkg-price-banner" data-price-from-banner role="note">2.500 ₺'den başlayan fiyatlarla</p>
         <div class="packages-preview">
           <article class="pkg-card reveal" style="--accent:#d90429">
             <span class="pkg-tag">BUSINESS</span>
@@ -590,8 +608,15 @@
       document.getElementById("bgLayer2")
     ];
     const bgDots = document.getElementById("bgDots");
-    const heroBackgrounds = ["hero1.jpg", "hero2.jpg"];
+    const heroBackgrounds = [
+      "hero1.jpg",
+      "hero2.jpg",
+      "hero3.jpg",
+      "hero4.jpg"
+    ];
     let currentBg = 0;
+    let activeHeroLayer = 0;
+    let heroBgInitialized = false;
     let bgTimer;
 
     function handleNavScroll() {
@@ -632,9 +657,21 @@
     }
     function setBackground(index, reset = false) {
       currentBg = (index + heroBackgrounds.length) % heroBackgrounds.length;
-      bgLayers[0].style.backgroundImage = `url('${heroBackgrounds[currentBg]}')`;
-      bgLayers[0].classList.add("active");
-      bgLayers[1].classList.remove("active");
+      if (!heroBgInitialized) {
+        heroBgInitialized = true;
+        bgLayers[0].style.backgroundImage =
+          `url('${heroBackgrounds[currentBg]}')`;
+        bgLayers[0].classList.add("active");
+        bgLayers[1].classList.remove("active");
+        activeHeroLayer = 0;
+      } else {
+        const nextLayer = 1 - activeHeroLayer;
+        bgLayers[nextLayer].style.backgroundImage =
+          `url('${heroBackgrounds[currentBg]}')`;
+        bgLayers[nextLayer].classList.add("active");
+        bgLayers[activeHeroLayer].classList.remove("active");
+        activeHeroLayer = nextLayer;
+      }
       bgDots.querySelectorAll(".dot").forEach((dot, dotIndex) => {
         dot.classList.toggle("active", dotIndex === currentBg);
       });
