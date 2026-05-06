@@ -219,19 +219,21 @@
 
     /* Paket fiyat bandi */
     .pkg-price-banner {
-      margin: 6px auto 26px; max-width: min(560px, 100%);
-      padding: 14px 22px 14px 20px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #fff8f8 0%, #ffffff 42%, #fffaf5 100%);
-      border: 1px solid rgba(217, 4, 41, 0.16);
-      border-left: 4px solid #d90429;
-      box-shadow: 0 10px 32px rgba(217, 4, 41, 0.08);
+      margin: 8px auto 26px;
+      width: fit-content;
+      max-width: min(560px, 100%);
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #d90429 0%, #b10222 55%, #8d0018 100%);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 12px 34px rgba(217, 4, 41, 0.34);
       font-weight: 800;
       font-size: clamp(1rem, 2.4vw, 1.18rem);
-      color: #141414;
-      letter-spacing: -0.02em;
+      color: #fff;
+      letter-spacing: -0.01em;
       line-height: 1.35;
       text-align: center;
+      position: relative;
     }
 
     /* Paket onizleme kartlari */
@@ -415,8 +417,8 @@
   <main id="top">
     <section class="hero">
       <div class="hero-bg" aria-hidden="true">
-        <div class="hero-bg-layer active" id="bgLayer1" style="background-image:url('hero1.jpg')"></div>
-        <div class="hero-bg-layer" id="bgLayer2" style="background-image:url('hero2.jpg')"></div>
+        <div class="hero-bg-layer active" id="bgLayer1" style="background-image:url('hero3.jpg')"></div>
+        <div class="hero-bg-layer" id="bgLayer2" style="background-image:url('hero4.jpg')"></div>
       </div>
       <div class="container hero-grid">
         <div class="hero-content reveal">
@@ -609,8 +611,6 @@
     ];
     const bgDots = document.getElementById("bgDots");
     const heroBackgrounds = [
-      "hero1.jpg",
-      "hero2.jpg",
       "hero3.jpg",
       "hero4.jpg"
     ];
